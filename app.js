@@ -5,18 +5,22 @@ let btns = ["yellow", "red", "purple", "green"]
 let started = false;
 let level = 0;
 
-let h2 = document.querySelector("h2")
+let h2 = document.querySelector("h2");
+
+const startBtn = document.getElementById("startBtn");
+
+startBtn.addEventListener("click", startGame);
 
 function startGame() {
     if (!started) {
         console.log("Game Started");
         started = true;
+        startBtn.style.display = "none";
+        
         levelUp();
     }
 }
 
-document.addEventListener("keydown", startGame);   // Laptop/Desktop
-document.addEventListener("touchstart", startGame); // Mobile
 
 function gameFlash(btn) {
     btn.classList.add("flash")
@@ -82,4 +86,5 @@ function reset() {
     userSeq = [];
     level = 0;
 
+    startBtn.style.display = "inline-block";
 }
