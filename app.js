@@ -15,7 +15,7 @@ function startGame() {
     }
 }
 
-document.addEventListener("keypress", startGame);   // Laptop/Desktop
+document.addEventListener("keydown", startGame);   // Laptop/Desktop
 document.addEventListener("touchstart", startGame); // Mobile
 
 function gameFlash(btn) {
@@ -38,7 +38,7 @@ function levelUp() {
     h2.innerText = `Level ${level}`;
 
     //random btn choose
-    let randomIdx = Math.floor(Math.random() * 4); //4 or btns.length
+    let randomIdx = Math.floor(Math.random() * btns.length); 
     let randomColor = btns[randomIdx];
     let randomBtn = document.querySelector(`.${randomColor}`);
     gameSeq.push(randomColor);
@@ -52,7 +52,7 @@ function checkAns(idx) {
             setTimeout(levelUp, 1000)
         }
     } else {
-        h2.innerHTML = `Game Over! Your score was <b>${level}</b> <br> Press any key to start.`
+        h2.innerHTML = `Game Over! Your score was <b>${level}</b> <br> Press any key or tap to restart.`
         document.querySelector("body").style.backgroundColor = "Red"
         setTimeout(function()  {
             document.querySelector("body").style.backgroundColor = "white"
@@ -81,4 +81,5 @@ function reset() {
     gameSeq = [];
     userSeq = [];
     level = 0;
+
 }
